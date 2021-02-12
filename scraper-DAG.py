@@ -4,7 +4,7 @@ from airflow.operators.python_operator import PythonOperator
 # from airflow.utils.dates import days_ago
 from airflow.utils.timezone import datetime
 
-from linkedin import run_scraper
+from main import run_scrapers
 
 default_args = {
     'owner': 'airflow',
@@ -25,10 +25,10 @@ dag = DAG(
     schedule_interval=timedelta(weeks=1)
 )
 
-run_scraper = PythonOperator(
-    task_id='run_scraper',
-    python_callable=run_scraper,
+run_scrapers = PythonOperator(
+    task_id='run_scrapers',
+    python_callable=run_scrapers,
     dag=dag
 )
 
-run_scraper # >> next_task >> next_task
+run_scrapers # >> next_task >> next_task
