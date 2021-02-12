@@ -18,6 +18,7 @@ SEARCH_TERMS = 'junior developer'
 LOCATION = 'USA'
 JOB_COUNT = 25
 EXCLUDE = ['degree', 'java', 'years of experience']
+
 # automatically for last week
 url = f"https://www.linkedin.com/jobs/search/?f_TPR=r604800&keywords={SEARCH_TERMS}&location={LOCATION}&sortBy=DD&f_TP=1%2C2&redirect=false&position=1&pageNum=0"
 
@@ -115,7 +116,7 @@ job_data['Description'] = job_data['Description'].str.replace('\n',' ')
 
 for data in job_data:
     if job_data[job_data['Description'].isin([EXCLUDE])]:
-        print(job_data.index)
+        print(job_data.index[0])
 
 print(job_data.info())
 job_data.head()
